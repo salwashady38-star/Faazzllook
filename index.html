@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faazzllook</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+:root {
+            --primary-color: #2909b7;
+            --secondary-color: #6c757d;
+            --accent-color: #28a745;
+            --background-color: #f8f9fa;
+            --text-color: #333333;
+            --white-color: #ffffff;
+            --dark-bg: #212529;
+            --dark-text: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            direction: rtl;
+            text-align: right;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #20088a;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-radius: 5px;
+            margin: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Section Padding */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            padding: 1rem 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* RTL: use margin-right */
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Burger Menu for Mobile */
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px);
+            text-align: right;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            flex: 1;
+            /* RTL: use padding-right */
+            padding-right: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--white-color);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: var(--white-color);
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            /* RTL: align image to start visually (left in row-reverse) */
+            justify-content: flex-start;
+            padding-left: 40px;
+        }
+
+        .hero-image img {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            box-shadow:
+                0 0 15px var(--primary-color),
+                0 0 30px var(--primary-color),
+                0 0 60px var(--primary-color),
+                0 0 100px var(--primary-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 0 25px var(--primary-color),
+                0 0 50px var(--primary-color),
+                0 0 100px var(--primary-color),
+                0 0 150px var(--primary-color);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white-color);
+            border-bottom: 1px solid #eee;
+            text-align: right;
+        }
+
+        .about h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: #0d1117;
+            padding: 80px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .projects h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: #161b22;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(9, 12, 183, 0.219);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 25px var(--primary-color), 0 0 50px var(--primary-color);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: #00cfff;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: #ddd;
+            flex-grow: 1;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #0a088a;
+            color: white;
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: var(--white-color);
+            border-bottom: 1px solid #eee;
+        }
+
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary-color);
+        }
+
+        .skill-item i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-item span {
+            display: block;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--background-color);
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 15px;
+            }
+
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                background-color: var(--dark-bg);
+                width: 100%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                align-items: center;
+                transition: right 0.3s ease-in;
+                z-index: 999;
+            }
+
+            .nav-links.nav-active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                min-height: auto;
+                padding-top: 40px;
+            }
+
+            .hero-content {
+                padding: 0 20px;
+                order: 2;
+            }
+
+            .hero-image {
+                padding: 0 20px;
+                margin-bottom: 30px;
+                order: 1;
+            }
+
+            .hero-image img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .projects-grid, .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Burger Animation */
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .toggle .line2 {
+            opacity: 0;
+        }
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Faazzllook</a>
+            <ul class="nav-links">
+                <li><a href="#about">عني</a></li>
+                <li><a href="#projects">كورسات</a></li>
+                <li><a href="#skills">مهاراتي</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+            <div class="burger" aria-label="قائمة">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>مرحباً، أنا فزلـــــــــوك</h1>
+            <p>
+                مقدم محتوي ومدرب تعليمي فزلـــــــــوك وشغوف بتبسيط الأشياء وتغيير عقلية الشباب ناحية
+                التعليم الحقيقي...!
+                ومتنســـــــــــــــــاش... خليك فزلوك..!
+            </p>
+            <a href="#projects" class="btn">ابدأ الآن</a>
+        </div>
+        <div class="hero-image">
+            <img src="hero.jpg" alt="صورة أحمد إسماعيل">
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>عني</h2>
+        <div class="about-content">
+            <p>
+               أسعى دائماً لتقديم محتوى مبتكر وبسيط يساعد المتعلمين على تحقيق أهدافهم وتطوير مهاراتهم.
+                أؤمن بأن التعليم المستمر هو مفتاح النجاح في الحياة المهنية والشخصية.
+            </p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>💻 كورسات</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="faazzllook4.jpg" alt="AI CV Course" class="course-image">
+                <h3>Build an AI CV That Passes ATS and Gets You Interviews</h3>
+                <p>هل سئمت من عدم الحصول على ردود على طلبات التوظيف الخاصة بك؟ ستعلمك هذه الدورة التدريبية كيفية إنشاء سيرة ذاتية لا تتجاوز أنظمة تتبع المتقدمين (ATS) فحسب، بل تجذب انتباه مديري التوظيف أيضًا.</p>
+                <a href="https://www.udemy.com/course/build-an-ai-cv-that-passes-ats-and-gets-you-interviews/" target="_blank" class="cta-button" rel="noopener">احجز الآن</a>
+            </div>
+
+            <div class="project-card">
+                <img src="faazzllook3.jpg" alt="LinkedIn Course" class="course-image">
+                <h3>The LinkedIn Guide to Engineer Your Future</h3>
+                <p>تعتبر LinkedIn أداة قوية لبناء علامتك التجارية الاحترافية. ستعلمك هذه الدورة كيفية إنشاء ملف شخصي مؤثر، والتواصل مع محترفين آخرين، واكتشاف الفرص الوظيفية.</p>
+                <a href="https://www.udemy.com/course/the-linkedin-guide-to-engineer-your-future/" target="_blank" class="cta-button" rel="noopener">احجز الآن</a>
+            </div>
+
+            <div class="project-card">
+                <img src="faazzllook2.jpg" alt="Time Management Course" class="course-image">
+                <h3>The Ultimate Time Management Guide by Faazzllook Mindset</h3>
+                <p>اكتشف استراتيجيات مثبتة لإدارة وقتك بفعالية، وتحديد أولويات مهامك، وتجنب الإرهاق. ستكتسب عقلية جديدة ستساعدك على تحقيق أهدافك.</p>
+                <a href="https://www.udemy.com/course/the-ultimate-time-management-guide-by-faazzllook-mindset/" target="_blank" class="cta-button" rel="noopener">احجز الآن</a>
+            </div>
+
+            <div class="project-card">
+                <img src="faazzllook.jpg" alt="High School Course" class="course-image">
+                <h3>خريطة الثانوية</h3>
+                <p>هذه الدورة توفر دليلاً شاملاً للتنقل في المسار الثانوي. ستتعلم استراتيجيات للدراسة الفعالة، واختيار التخصص المناسب، وتطوير المهارات التي تحتاجها للنجاح.</p>
+                <a href="https://www.udemy.com/course/the-map-of-high-school/" target="_blank" class="cta-button" rel="noopener">احجز الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>مهاراتي</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <span>التدريب التعليمي</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-video"></i>
+                <span>إنتاج المحتوى</span>
+            </div> أنا أحمد إسماعيل، مدرب تعليمي شغوف بتطوير المحتوى التعليمي وتغيير عقلية الشباب نحو التعليم الفعال.
+            <div class="skill-item">
+                <i class="fas fa-brain"></i>
+                <span>تطوير العقلية</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-clock"></i>
+                <span>إدارة الوقت</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-users"></i>
+                <span>التواصل الفعال</span>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-lightbulb"></i>
+                <span>التفكير الإبداعي</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>تواصل معي</h2>
+        <p>هل لديك استفسار أو اقتراح؟ لا تتردد في التواصل معي!</p>
+        <div class="contact-links">
+            <a href="https://m.facebook.com/faazzllook/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/in/ahmed-esmail2025/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Faazzllook. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // Toggle navigation menu (مع حماية لو العناصر ماتواجدتش)
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+
+        if (burger && nav) {
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('nav-active');
+                burger.classList.toggle('toggle');
+            });
+
+            // Close menu when clicking on a link
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
